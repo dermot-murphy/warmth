@@ -1,0 +1,8 @@
+{
+    "sketch": "Warmth.ino",
+    "output": "build",
+    "board": "arduino:megaavr:uno2018",
+    "port": "COM16",
+    "configuration": "mode=on",
+    "programmer": "medbg"
+}

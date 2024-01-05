@@ -1,0 +1,9 @@
+#line 1 "U:\\ProjectsInternal\\ArduinoCExample\\.vscode\\arduino.json"
+{
+    "sketch": "ArduinoCExample.ino",
+    "output": "build",
+    "board": "arduino:megaavr:uno2018",
+    "port": "COM16",
+    "configuration": "mode=on",
+    "programmer": "medbg"
+}

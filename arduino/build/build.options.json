@@ -1,0 +1,11 @@
+{
+  "additionalFiles": "..\\..\\..,..\\..\\..,..\\..\\..",
+  "builtInToolsFolders": "",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "",
+  "fqbn": "arduino:megaavr:uno2018:mode=on",
+  "hardwareFolders": "C:\\Users\\dermot.murphy\\AppData\\Local\\Arduino15\\packages",
+  "otherLibrariesFolders": "U:\\Documents\\Arduino\\libraries",
+  "runtime.ide.version": "10607",
+  "sketchLocation": "U:\\ProjectsInternal\\ArduinoCExample"
+}
