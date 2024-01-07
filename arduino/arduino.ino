@@ -65,6 +65,7 @@ typedef enum {
 
 temperature_state_t temperature_state;
 float temperature ;
+char temperature_time [9] ;
 
 /* WiFi ---------------------------------------------------------------------*/
 
@@ -82,7 +83,7 @@ WiFiClient web_client = web_server.available();
 
 /* NTP ----------------------------------------------------------------------*/
 
-const int NTP_INTERVAL = 5000 ;
+const int NTP_INTERVAL = 60 ;
 const int NTP_PORT= 123;
 
 WiFiUDP ntp_udp;
@@ -197,6 +198,7 @@ void samplingTask() {
   print_Time() ;
   Serial.print("Sampling temperature: ");
 
+  store_Time() ;
   adc_value = analogRead(pinTempSensor);
 
   temperature_resistance = 1023.0/adc_value-1.0;
@@ -307,7 +309,7 @@ void enable_WiFi() {
 void connect_to_WiFi() {
   // attempt to connect to Wifi network
   while (wifi_status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to SSID: ");
+    Serial.print("Attempting to connect to WiFI network: ");
     Serial.println(WIFI_SSID);
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network
     wifi_status = WiFi.begin(WIFI_SSID, WIFI_PASS);
@@ -343,6 +345,8 @@ void publish_MQTT() {
     Serial.print("Value ") ;
     Serial.println(temperature);
     mqtt_client.beginMessage(MQTT_TOPIC);
+    mqtt_client.print(temperature_time);
+    mqtt_client.print(" ");
     mqtt_client.print(temperature);
     mqtt_client.endMessage();
 }
@@ -374,6 +378,10 @@ void print_Time() {
 
   sprintf(text, "%02d ", second());
   Serial.print(text);
+}
+
+void store_Time() {
+  sprintf(temperature_time, "%02d:%02d:%02d", hour(),  minute(), second());
 }
 
 /* NTP ---------------------------------------------------------------------*/

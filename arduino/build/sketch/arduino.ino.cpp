@@ -67,6 +67,7 @@ typedef enum {
 
 temperature_state_t temperature_state;
 float temperature ;
+char temperature_time [9] ;
 
 /* WiFi ---------------------------------------------------------------------*/
 
@@ -84,7 +85,7 @@ WiFiClient web_client = web_server.available();
 
 /* NTP ----------------------------------------------------------------------*/
 
-const int NTP_INTERVAL = 5000 ;
+const int NTP_INTERVAL = 60 ;
 const int NTP_PORT= 123;
 
 WiFiUDP ntp_udp;
@@ -118,43 +119,45 @@ SimpleTimer sample_timer;
 
 /* Setup --------------------------------------------------------------------*/
 
-#line 119 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 120 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void setup();
-#line 162 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 163 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void loop();
-#line 184 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 185 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void samplingStart();
-#line 188 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 189 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void samplingTask();
-#line 248 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 250 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void enable_LCD();
-#line 265 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 267 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void printWifiStatus();
-#line 290 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 292 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void enable_WiFi();
-#line 307 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 309 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void connect_to_WiFi();
-#line 323 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 325 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void enable_MQTT();
-#line 338 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 340 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void publish_MQTT();
-#line 352 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 356 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void enable_Time();
-#line 367 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 371 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void print_Time();
-#line 381 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 383 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+void store_Time();
+#line 389 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void enable_NTP();
-#line 386 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
-unsigned long getNtpTime();
 #line 394 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+unsigned long getNtpTime();
+#line 402 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void enable_WebServer();
-#line 398 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 406 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void printWebPage();
-#line 457 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 465 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void http_Post();
-#line 480 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 488 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void SerialTask();
-#line 119 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
+#line 120 "U:\\Personal\\Jessica\\Warmth\\arduino\\arduino.ino"
 void setup() {
 
   // Initiaise the serial port
@@ -236,6 +239,7 @@ void samplingTask() {
   print_Time() ;
   Serial.print("Sampling temperature: ");
 
+  store_Time() ;
   adc_value = analogRead(pinTempSensor);
 
   temperature_resistance = 1023.0/adc_value-1.0;
@@ -346,7 +350,7 @@ void enable_WiFi() {
 void connect_to_WiFi() {
   // attempt to connect to Wifi network
   while (wifi_status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to SSID: ");
+    Serial.print("Attempting to connect to WiFI network: ");
     Serial.println(WIFI_SSID);
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network
     wifi_status = WiFi.begin(WIFI_SSID, WIFI_PASS);
@@ -382,6 +386,8 @@ void publish_MQTT() {
     Serial.print("Value ") ;
     Serial.println(temperature);
     mqtt_client.beginMessage(MQTT_TOPIC);
+    mqtt_client.print(temperature_time);
+    mqtt_client.print(" ");
     mqtt_client.print(temperature);
     mqtt_client.endMessage();
 }
@@ -413,6 +419,10 @@ void print_Time() {
 
   sprintf(text, "%02d ", second());
   Serial.print(text);
+}
+
+void store_Time() {
+  sprintf(temperature_time, "%02d:%02d:%02d", hour(),  minute(), second());
 }
 
 /* NTP ---------------------------------------------------------------------*/
