@@ -1,4 +1,4 @@
-U:\ProjectsInternal\ArduinoCExample\build\libraries\WiFiNINA\WiFiClient.cpp.o: \
+U:\Personal\Jessica\Warmth\arduino\build\libraries\WiFiNINA\WiFiClient.cpp.o: \
  U:\Documents\Arduino\libraries\WiFiNINA\src\WiFiClient.cpp \
  U:\Documents\Arduino\libraries\WiFiNINA\src\utility/wl_definitions.h \
  U:\Documents\Arduino\libraries\WiFiNINA\src\utility/wl_types.h \

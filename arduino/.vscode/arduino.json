@@ -1,5 +1,5 @@
 {
-    "sketch": "Warmth.ino",
+    "sketch": "arduino.ino",
     "output": "build",
     "board": "arduino:megaavr:uno2018",
     "port": "COM16",

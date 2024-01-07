@@ -1,6 +1,6 @@
-#line 1 "U:\\ProjectsInternal\\ArduinoCExample\\.vscode\\arduino.json"
+#line 1 "U:\\Personal\\Jessica\\Warmth\\arduino\\.vscode\\arduino.json"
 {
-    "sketch": "ArduinoCExample.ino",
+    "sketch": "arduino.ino",
     "output": "build",
     "board": "arduino:megaavr:uno2018",
     "port": "COM16",

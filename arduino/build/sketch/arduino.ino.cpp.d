@@ -1,6 +1,5 @@
-U:\ProjectsInternal\ArduinoCExample\build\core\NANO_compat.cpp.o: \
- C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino\NANO_compat.cpp \
- C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino\NANO_compat.h \
+U:\Personal\Jessica\Warmth\arduino\build\sketch\arduino.ino.cpp.o: \
+ U:\Personal\Jessica\Warmth\arduino\build\sketch\arduino.ino.cpp \
  C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/Arduino.h \
  C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/api/ArduinoAPI.h \
  C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/api/Binary.h \
@@ -26,4 +25,38 @@ U:\ProjectsInternal\ArduinoCExample\build\core\NANO_compat.cpp.o: \
  C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/api/USBAPI.h \
  C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/MSC.h \
  C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/UNO_compat.h \
- C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/Arduino.h
+ C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/Arduino.h \
+ U:\Documents\Arduino\libraries\ArduinoHttpClient\src/ArduinoHttpClient.h \
+ U:\Documents\Arduino\libraries\ArduinoHttpClient\src/HttpClient.h \
+ C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/api/deprecated/IPAddress.h \
+ C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/api/deprecated/Client.h \
+ c:\users\dermot.murphy\appdata\local\arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino\api\client.h \
+ U:\Documents\Arduino\libraries\ArduinoHttpClient\src/WebSocketClient.h \
+ U:\Documents\Arduino\libraries\ArduinoHttpClient\src/URLEncoder.h \
+ U:\Documents\Arduino\libraries\ArduinoHttpClient\src/b64.h \
+ U:\Documents\Arduino\libraries\ArduinoHttpClient\src/HttpClient.h \
+ U:\Documents\Arduino\libraries\ArduinoHttpClient\src/URLEncoder.h \
+ U:\Documents\Arduino\libraries\ArduinoHttpClient\src/WebSocketClient.h \
+ U:\Documents\Arduino\libraries\EasyNTPClient\src/EasyNTPClient.h \
+ C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/api/deprecated/Udp.h \
+ U:\Documents\Arduino\libraries\Time/TimeLib.h \
+ U:\Documents\Arduino\libraries\ArduinoMqttClient\src/ArduinoMqttClient.h \
+ U:\Documents\Arduino\libraries\ArduinoMqttClient\src/MqttClient.h \
+ U:\Documents\Arduino\libraries\ArduinoMqttClient\src/MqttClient.h \
+ U:\Documents\Arduino\libraries\Grove_-_LCD_RGB_Backlight/rgb_lcd.h \
+ C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/api/deprecated/Print.h \
+ U:\Documents\Arduino\libraries\SimpleTimer/SimpleTimer.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/WiFiNINA.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/WiFi.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/utility/wl_definitions.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/utility/wl_types.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/WiFiClient.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/WiFiSSLClient.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/WiFiServer.h \
+ C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/api/deprecated/Server.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/WiFiStorage.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/utility/wifi_drv.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/utility/wifi_spi.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/utility/wl_definitions.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/WiFiUdp.h \
+ U:\Documents\Arduino\libraries\WiFiNINA\src/WiFiClient.h

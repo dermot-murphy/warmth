@@ -1,4 +1,4 @@
-U:\ProjectsInternal\ArduinoCExample\build\libraries\EasyNTPClient\EasyNTPClient.cpp.o: \
+U:\Personal\Jessica\Warmth\arduino\build\libraries\EasyNTPClient\EasyNTPClient.cpp.o: \
  U:\Documents\Arduino\libraries\EasyNTPClient\src\EasyNTPClient.cpp \
  C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/Arduino.h \
  C:\Users\dermot.murphy\AppData\Local\Arduino15\packages\arduino\hardware\megaavr\1.8.7\cores\arduino/api/ArduinoAPI.h \

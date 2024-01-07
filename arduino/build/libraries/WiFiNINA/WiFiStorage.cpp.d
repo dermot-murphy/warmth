@@ -1,4 +1,4 @@
-U:\ProjectsInternal\ArduinoCExample\build\libraries\WiFiNINA\WiFiStorage.cpp.o: \
+U:\Personal\Jessica\Warmth\arduino\build\libraries\WiFiNINA\WiFiStorage.cpp.o: \
  U:\Documents\Arduino\libraries\WiFiNINA\src\WiFiStorage.cpp \
  U:\Documents\Arduino\libraries\WiFiNINA\src\WiFiStorage.h \
  U:\Documents\Arduino\libraries\WiFiNINA\src\utility/wifi_drv.h \

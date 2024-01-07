@@ -1,4 +1,4 @@
-U:\ProjectsInternal\ArduinoCExample\build\libraries\ArduinoHttpClient\WebSocketClient.cpp.o: \
+U:\Personal\Jessica\Warmth\arduino\build\libraries\ArduinoHttpClient\WebSocketClient.cpp.o: \
  U:\Documents\Arduino\libraries\ArduinoHttpClient\src\WebSocketClient.cpp \
  U:\Documents\Arduino\libraries\ArduinoHttpClient\src\b64.h \
  U:\Documents\Arduino\libraries\ArduinoHttpClient\src\WebSocketClient.h \
