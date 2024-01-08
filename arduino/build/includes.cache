@@ -11,6 +11,11 @@
   },
   {
     "Sourcefile": "U:\\Personal\\Jessica\\Warmth\\arduino\\build\\sketch\\arduino.ino.cpp",
+    "Include": "ThingSpeak.h",
+    "Includepath": "U:\\Documents\\Arduino\\libraries\\ThingSpeak\\src"
+  },
+  {
+    "Sourcefile": "U:\\Personal\\Jessica\\Warmth\\arduino\\build\\sketch\\arduino.ino.cpp",
     "Include": "ArduinoHttpClient.h",
     "Includepath": "U:\\Documents\\Arduino\\libraries\\ArduinoHttpClient\\src"
   },
@@ -46,6 +51,11 @@
   },
   {
     "Sourcefile": "U:\\Personal\\Jessica\\Warmth\\arduino\\build\\sketch\\arduino.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "U:\\Documents\\Arduino\\libraries\\ThingSpeak\\src\\ThingSpeak.cpp",
     "Include": "",
     "Includepath": null
   },

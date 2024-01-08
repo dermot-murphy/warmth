@@ -1,3 +1,4 @@
+#include <ThingSpeak.h>
 #include <ArduinoHttpClient.h>
 #include <b64.h>
 #include <HttpClient.h>
@@ -91,7 +92,7 @@ EasyNTPClient ntp_client(ntp_udp, "pool.ntp.org");
 
 /* MQTT ---------------------------------------------------------------------*/
 
-const bool MQTT_PUBLISH_ENABLE = false ;
+const bool MQTT_PUBLISH_ENABLE = true ;
 const char MQTT_BROKER[] = "test.mosquitto.org";
 const int  MQTT_PORT     = 1883;
 const char MQTT_TOPIC[]  = "warmth-checker";
@@ -100,7 +101,7 @@ WiFiClient mqtt_wifi_client;
 MqttClient mqtt_client(mqtt_wifi_client);
 
 /* HTTP ---------------------------------------------------------------------*/
-
+/*
 const bool HTTP_POST_ENABLE = false ;
 char HTTP_SERVER_ADDRESS[] = "192.168.0.3"; 
 int HTTP_SERVER_PORT = 8080;
@@ -108,6 +109,15 @@ int HTTP_SERVER_PORT = 8080;
 WiFiClient http_wifi;
 HttpClient http_client = HttpClient(http_wifi, HTTP_SERVER_ADDRESS, HTTP_SERVER_PORT);
 int http_status = WL_IDLE_STATUS;
+*/
+/* ThingSpeak ---------------------------------------------------------------*/
+
+const bool THINGSPEAK_POST_ENABLE = true ;
+const unsigned long THINGSPEAK_CHANNEL_ID = 2396838;
+const char * THINGSPEAK_WRITEAPIKEY = "K4Z6QTJXCYYG9IM2";
+
+WiFiClient  thingspeak_client;
+SimpleTimer thingspeak_timer ;
 
 /* Timers -------------------------------------------------------------------*/
 
@@ -153,6 +163,9 @@ void setup() {
   // Enable MQTT
   enable_MQTT() ;
 
+  // Enable ThingSpeak
+  enable_ThingSpeak() ;
+
   // Start the web server
   enable_WebServer() ;
   printWifiStatus();
@@ -174,8 +187,11 @@ void loop() {
     if (MQTT_PUBLISH_ENABLE) {
       publish_MQTT() ;
     }
-    if (HTTP_POST_ENABLE) {
-      http_Post() ;
+  }
+  if (thingspeak_timer.isReady()) {
+    thingspeak_timer.reset();
+    if (THINGSPEAK_POST_ENABLE) {
+      post_ThingSpeak() ;
     }
   }
 }
@@ -460,27 +476,35 @@ void printWebPage() {
   }
 }
 
-/* Database Post ------------------------------------------------------------*/
+/* ThingSpeak ---------------------------------------------------------------*/
 
-void http_Post() {
+void enable_ThingSpeak() {
 
-  Serial.println("Connecting to database...");
+ thingspeak_timer.setInterval(60000) ;
+ ThingSpeak.begin(thingspeak_client);
 
-  if (http_client.connect(HTTP_SERVER_ADDRESS, HTTP_SERVER_PORT)) {
+}
 
-    String PostData = "someDataToPost";
+void post_ThingSpeak() {
 
-    http_client.println("POST /Api/AddParking/3 HTTP/1.1");
-    http_client.println("Host: 10.0.0.138");
-    http_client.println("User-Agent: Arduino/1.0");
-    http_client.println("Connection: close");
-    http_client.print("Content-Length: ");
-    http_client.println(PostData.length());
-    http_client.println();
-    http_client.println(PostData);
-  } else {
-    Serial.println("Failed to connect to server");
+  Serial.println("Updating ThingSpeak Channel ...");
+
+  ThingSpeak.setField(1, temperature_time);
+  ThingSpeak.setField(2, temperature);
+  ThingSpeak.setField(3, temperature_state);
+
+  // set the status
+ // ThingSpeak.setStatus(myStatus);
+
+  int x = ThingSpeak.writeFields(THINGSPEAK_CHANNEL_ID, THINGSPEAK_WRITEAPIKEY);
+
+  if(x == 200){
+    Serial.println("ThingSpeak Channel update successful.");
   }
+  else{
+    Serial.println("ThinkSpeak Problem updating channel. HTTP error code " + String(x));
+  }
+
 }
 
 /* Serial -------------------------------------------------------------------*/
