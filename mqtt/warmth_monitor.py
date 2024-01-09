@@ -103,9 +103,8 @@ def subscribe(client: mqtt_client):
         print ("CLIENT ROOM IS " + client_current_state)
         
         if client_current_state != client_previous_state:
-            if client_current_state != "TEST":
-                print ("Phoning next of kin")
-                Send_SMS(msg)
+            print ("Phoning next of kin")
+            #Send_SMS(msg)
            
 
     client.subscribe(MQTT_TOPIC)

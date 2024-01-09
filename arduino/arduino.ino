@@ -67,6 +67,7 @@ typedef enum {
 temperature_state_t temperature_state;
 float temperature ;
 char temperature_time [9] ;
+char temperature_message[5] ;
 
 /* WiFi ---------------------------------------------------------------------*/
 
@@ -231,33 +232,33 @@ void samplingTask() {
 
   if (temperature > TEMPERATURE_HIGH) {
     temperature_state = TEMPERATURE_STATE_TOO_HOT ;
+    strcpy(temperature_message, "HOT") ;
   } else if (temperature < TEMPERATURE_LOW) {
     temperature_state = TEMPERATURE_STATE_TOO_COLD ;
+    strcpy(temperature_message, "COLD") ;
   } else {
     temperature_state = TEMPERATURE_STATE_OK;
+    strcpy(temperature_message, "OK") ;
   }
 
   switch (temperature_state) {
     case TEMPERATURE_STATE_OK:
       lcd.setRGB(colorR_ok, colorG_ok, colorB_ok);
-      strcpy(text, " OK  ");
       break ;
     case TEMPERATURE_STATE_TOO_HOT:
       lcd.setRGB(colorR_hot, colorG_hot, colorB_hot);
-      strcpy(text, " HOT ");
       break ;
     case TEMPERATURE_STATE_TOO_COLD:
       lcd.setRGB(colorR_cold, colorG_cold, colorB_cold);
-      strcpy(text, " COLD");
       break ;
     default:
       break ;
   }
 
   lcd.setCursor(10, 1);
-  lcd.print(text) ;
+  lcd.print(temperature_message) ;
 
-  Serial.print(temperature);
+  Serial.print(temperature_message);
   Serial.println(text) ;
 }
 
@@ -364,6 +365,10 @@ void publish_MQTT() {
     mqtt_client.print(temperature_time);
     mqtt_client.print(" ");
     mqtt_client.print(temperature);
+    mqtt_client.print(" ");
+    mqtt_client.print(temperature_state);
+    mqtt_client.print(" ");
+    mqtt_client.print(temperature_message);
     mqtt_client.endMessage();
 }
 
