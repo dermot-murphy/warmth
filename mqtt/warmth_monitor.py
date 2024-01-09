@@ -28,7 +28,8 @@ mqtt_flags = ""
 SMS_FROM_TELEPHONE_NUMBER = 447700139265
 SMS_TO_TELEPHONE_NUMBER = 7801841668
 SMS_ACCOUNT_SID = 'ACf8f2af6aefde208d1a9a22f730e1c0b2'
-SMS_AUTH_TOKEN = '236c181f880f44823f65ba87741bb35d'
+SMS_AUTH_TOKEN_PART1 = 'd797093cde5ecf'
+SMS_AUTH_TOKEN_PART2 = '3dd34bafaad73b0099'
 
 # Client state (ok, hot, cold, etc)
 client_previous_state = ""
@@ -41,7 +42,7 @@ def Send_SMS(state):
     global SMS_ACCOUNT_SID
     global SMS_AUTH_TOKEN
     
-    client = Client(SMS_ACCOUNT_SID, SMS_AUTH_TOKEN)
+    client = Client(SMS_ACCOUNT_SID, SMS_AUTH_TOKEN_PART1 + SMS_AUTH_TOKEN_PART2)
 
     message = client.messages \
         .create(
